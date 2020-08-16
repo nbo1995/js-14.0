@@ -58,30 +58,33 @@ showTypeOf(income);
 showTypeOf(deposit);
 
 // 1) Объявить функцию getExpensesMonth. Функция возвращает сумму всех обязательных расходов за месяц;
-let getExpensesMonth = function (spending) {
-  console.log(spending, typeof (spending));
+let getExpensesMonth = function () {
+  return expenses1 + expenses2;
 };
-getExpensesMonth(expenses1 + expenses2);
+console.log('Расходы за месяц: ' + getExpensesMonth());
 
 // 2) Объявить функцию getAccumulatedMonth. Функция возвращает Накопления за месяц (Доходы минус расходы);
-// 3) Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth ;
-let getAccumulatedMonth = function (accumulatedMonth) {
-  console.log(accumulatedMonth, typeof (accumulatedMonth));
+let getAccumulatedMonth = function () {
+  return money - getExpensesMonth();
 };
-getAccumulatedMonth(money - expenses1 - expenses2);
+
+
+// 3) Объявить переменную accumulatedMonth и присвоить ей результат вызова функции getAccumulatedMonth ;
+let accumulatedMonth = getAccumulatedMonth();
 
 
 // 4) Объявить функцию getTargetMonth. Подсчитывает за какой период будет достигнута цель, зная результат месячного накопления (accumulatedMonth) и возвращает результат;
-let accumulatedMonth = function (purpose) {
-  console.log(Math.ceil(purpose), ' месяца необходимо для достижения цели');
+let getTargetMonth = function () {
+  return mission / accumulatedMonth;
 };
-accumulatedMonth((money - expenses1 - expenses2) / period);
+
 
 // 6) budgetDay высчитываем исходя из значения месячного накопления (accumulatedMonth);
-let budgetDay = function (budget) {
-  console.log(budget, ' ежедневный доход');
+let budgetDay = function () {
+  return (money - getExpensesMonth()) / 30;
 }
-budgetDay(Math.floor((money - expenses1 - expenses2) / 30));
+console.log('Доход за день: ' + budgetDay());
+
 
 
 // Урок 3 Конец
